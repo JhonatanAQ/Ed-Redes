@@ -1,0 +1,34 @@
+ interface CityData {
+    id:number,
+    name:string,
+    position:{
+        x:number,
+        y:number
+    }
+}
+export  const cityDateJSON:CityData[] = [
+        {
+            "id":1,
+            "name":"Curitiba",
+            "position":{
+                "x":530,
+                "y":300
+            }
+        },
+        {
+            "id":2,
+            "name":"Londrina",
+            "position":{
+                "x":340,
+                "y":70
+            }
+        },
+        {
+            "id":3,
+            "name":"Maringa",
+            "position":{
+                "x":265,
+                "y":80
+            }
+        }
+]
