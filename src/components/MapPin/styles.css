@@ -1,37 +1,54 @@
 button{
     border: none;
     background-color: transparent;
-    width: 64px;
-    height: 64px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transform: translate(-50%, -50%);
+
 }
 .map-pin-b1,.map-pin-b2,.map-pin-b3{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 8px;
+
+    
 }
+
 .map-pin-b1{
-    width: 64px;
-    height: 64px;
-    border-radius: 64px;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
     background-color: transparent;
-    border-color:rgba(6, 181, 212, 0.5);
+    box-shadow: 0 0 0 0px rgb(6, 181, 212);
 }
+
+
+.pulse {
+  animation: pulse-animation 1s infinite;
+}
+@keyframes pulse-animation {
+    40% {
+        box-shadow: 0 0 0 0px #10B981;
+    }
+    100% {
+        box-shadow: 0 0 0 16px #10b9811a;
+    }
+    }
 .map-pin-b2{
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
+    width: 85%;
+    height: 85%;
+    border-radius: 100%;
     background-color: transparent;
-    border-color: rgb(6, 181, 212);
+    border: solid 0.3rem #06b5d4;
 }
 .map-pin-b3{
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
+    width: 65%;
+    height: 65%;
+    border-radius:  100%;
     background-color:rgb(255, 255, 255);
     border:none
 }

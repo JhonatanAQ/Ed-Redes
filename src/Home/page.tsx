@@ -45,7 +45,7 @@ function Home() {
                 )}
             </div>
         </div>
-        {aboutOpen&&<ScreenAboult data={city}/>}
+        {aboutOpen&&<ScreenAboult data={city} close={()=>setAboutOpen(false)}/>}
     </div>
   )
 }

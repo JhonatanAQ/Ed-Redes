@@ -6,8 +6,19 @@
     border-left: solid 2px var(--border-color);
     display: flex;
     color: white;
+    animation: open 1s;
 }
 .page-city-aboult h1{
-
     color: white;
+}
+@keyframes open {
+    from{
+        opacity: 0;
+        width: 0;
+
+    }
+    to{
+        opacity: 1;
+        width:32rem;
+    }
 }

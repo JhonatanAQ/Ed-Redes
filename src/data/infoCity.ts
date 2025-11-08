@@ -11,24 +11,24 @@ export  const cityDateJSON:CityData[] = [
             "id":1,
             "name":"Curitiba",
             "position":{
-                "x":530,
-                "y":300
+                "x":560,
+                "y":330
             }
         },
         {
             "id":2,
             "name":"Londrina",
             "position":{
-                "x":340,
-                "y":70
+                "x":370,
+                "y":100
             }
         },
         {
             "id":3,
             "name":"Maringa",
             "position":{
-                "x":265,
-                "y":80
+                "x":300,
+                "y":110
             }
         }
 ]
