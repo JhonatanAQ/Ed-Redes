@@ -1,0 +1,13 @@
+.page-city-aboult{
+    width:32rem;
+    height:100% ;
+    right: 0;
+    background-color: var(--bg-header);
+    border-left: solid 2px var(--border-color);
+    display: flex;
+    color: white;
+}
+.page-city-aboult h1{
+
+    color: white;
+}
