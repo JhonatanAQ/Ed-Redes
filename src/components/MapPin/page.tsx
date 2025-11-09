@@ -1,24 +1,37 @@
+import { useEffect, useState } from "react"
 import type { CityData } from "../../interface"
-import './styles.css'
+import {MapPinB,MapPin1,MapPin2,MapPin3} from "./styles"
 
-export function MapPin({data,className,onClick}:{
+export function MapPin({data,className,onClick,isPulsing,setPulse}:{
     data:CityData,
     className:string,
+    isPulsing:string,
+    setPulse:(i:string)=>any,
     onClick :()=>any
 }) {
+    const [pulsing,setPulsing]= useState(false)
+
+    function onPulse(){
+        if (isPulsing !== data.name) {setPulse(data.name)}
+       
+        onClick();
+    }
+    useEffect(()=>{
+        if (isPulsing === data.name) {
+            setPulsing(true)
+        }else{
+            setPulsing(false)
+        }
+    })
+
     return(
-         <button style={{
-            position: "absolute",
-            top:`${data.position.y}px`,
-            left:`${data.position.x}px` 
-        
-         }} type="button"className={className.toLocaleLowerCase()}onClick={()=>onClick()}>
-            <div className='map-pin-b1'>
-                <div className='map-pin-b2'>
-                    <div className='map-pin-b3'>
-                    </div>
-                </div>
-            </div>
-         </button>
+         <MapPinB $position={data.position} className={className.toLocaleLowerCase()}onClick={()=>{onPulse()}}>
+            <MapPin1 $isPulsing={pulsing}>
+                <MapPin2>
+                    <MapPin3>
+                    </MapPin3>
+                </MapPin2>
+            </MapPin1>
+         </MapPinB>
     )
 }

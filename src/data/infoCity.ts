@@ -1,6 +1,8 @@
  interface CityData {
     id:number,
     name:string,
+    title:string,
+    subtitle:string,
     position:{
         x:number,
         y:number
@@ -10,25 +12,31 @@ export  const cityDateJSON:CityData[] = [
         {
             "id":1,
             "name":"Curitiba",
+            "title":"Capital Ecológica do Brasil",
+            "subtitle":"Conhecida por seu planejamento urbano, transporte eficiente e amplas áreas verdes como o Jardim Botânico e o Parque Barigui.",
             "position":{
-                "x":530,
+                "x":500,
                 "y":300
             }
         },
         {
             "id":2,
             "name":"Londrina",
+            "title":"Polo Regional do Norte do Paraná",
+            "subtitle":"Segunda maior cidade do Paraná, importante centro universitário e agroindustrial.",
             "position":{
-                "x":340,
-                "y":70
+                "x":320,
+                "y":80
             }
         },
         {
             "id":3,
             "name":"Maringa",
+            "title":"Cidade Canção",
+            "subtitle":"Maringá é símbolo de desenvolvimento sustentável, reconhecida pela Catedral e pelos amplos espaços verdes.",
             "position":{
-                "x":265,
-                "y":80
+                "x":240,
+                "y":90
             }
         }
 ]

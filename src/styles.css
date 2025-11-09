@@ -13,9 +13,12 @@
 :root{
   --bg-color:#0A0E1A;
   --bg-header:#131820;
-  --border-color:#1F2937
+  --border-color:#1F2937;
+  --color-blue:#06b5d4;
+  --color-green:#10B981;
 }
 body{
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
