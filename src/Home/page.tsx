@@ -12,13 +12,14 @@ function HomePage() {
     const [isPulsing,setPulsing]= useState<string>('')
 
     function pagebout(props:{id:number}) {
-
         if (!city || city.id !== props.id  ) {
             const data = cityData.find(iten=>iten.id === props.id)
             if (data) {
                 setCity(data)
                 setAboutOpen(true)
             } 
+        }else{
+            setAboutOpen(true)
         }
     }
     useEffect(()=>{
@@ -50,7 +51,7 @@ function HomePage() {
                     </MapPinLst>
                 </Map>
             </MapConteiner>
-            {aboutOpen&&<ScreenAboult aboutIsOpen={aboutOpen} data={city} close={()=>setAboutOpen(false)}/>}
+            {aboutOpen&&<ScreenAboult aboutIsOpen={aboutOpen} data={city} />}
         </Main>
     </Home>
   )

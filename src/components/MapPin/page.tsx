@@ -12,7 +12,8 @@ export function MapPin({data,className,onClick,isPulsing,setPulse}:{
     const [pulsing,setPulsing]= useState(false)
 
     function onPulse(){
-        if (isPulsing !== data.name) setPulse(data.name);
+        if (isPulsing !== data.name) {setPulse(data.name)}
+       
         onClick();
     }
     useEffect(()=>{

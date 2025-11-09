@@ -1,0 +1,29 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  *{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    text-align: center;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  :root {
+    --bg-color: #0A0E1A;
+    --bg-header: #131820;
+    --border-color: #1F2937;
+    --color-blue: #06b5d4;
+    --color-green: #10B981;
+  }
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+`;
+export default  GlobalStyle

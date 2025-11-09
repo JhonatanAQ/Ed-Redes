@@ -1,10 +1,12 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './styles.css'
 import App from './App.tsx'
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
+import GlobalStyle from './globalStyles';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <ThemeProvider theme={theme}>
+    <GlobalStyle/>
+    <App/>
+  </ThemeProvider>,
 )
