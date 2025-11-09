@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import './styles.css'
 
 import { cityDateJSON}  from '../data/infoCity.ts'
 import type { CityData } from '../interface.ts'
 import { ScreenAboult } from '../components/Aboult/page.tsx'
 import { MapPin } from '../components/MapPin/page.tsx'
-
-function Home() {
-    const [aboutOpen,setAboutOpen] = useState(false)
+import {Home,Main,Header,HeaderIcon,HeaderTitle,Map,MapImg, MapConteiner, MapPinLst} from './styles.ts'
+function HomePage() {
+    const [aboutOpen,setAboutOpen] = useState<boolean>(false)
     const [city ,setCity] = useState<CityData>()
     const [cityData,setCityData] = useState<CityData[]>([])
+    const [isPulsing,setPulsing]= useState<string>('')
 
     function pagebout(props:{id:number}) {
 
@@ -27,26 +27,32 @@ function Home() {
         }
     })
   return (
-    <div className='page-home'>
-        <div className='page-main '>
-            <header className='page-header'>
-                <img src="./logo.svg" alt="icone do site semeando o futuro" />
-                <h1 className='page-title'>Semeando o Futuro</h1>
-            </header>
-            <div className='page-map' >
-                <img src="./map.svg" alt="mapa do paraná" />
-                {cityData.map(cityItem =>       
-                    <MapPin
-                        key={cityItem.id}
-                        data={cityItem}
-                        onClick={()=>pagebout({id:cityItem.id})}
-                        className={`${cityItem.name}-${cityItem.id}`} 
-                    />
-                )}
-            </div>
-        </div>
-        {aboutOpen&&<ScreenAboult data={city} close={()=>setAboutOpen(false)}/>}
-    </div>
+    <Home>
+        <Main>
+            <Header>
+                <HeaderIcon src="./logo.svg" alt="icone do site semeando o futuro" />
+                <HeaderTitle>Semeando o Futuro</HeaderTitle>
+            </Header>
+            <MapConteiner $aboutIsOpen={aboutOpen}>
+                <Map>
+                    <MapImg src="./map.svg" alt="mapa do paraná" />
+                    <MapPinLst>
+                        {cityData.map(cityItem =>       
+                            <MapPin
+                                key={cityItem.id}
+                                data={cityItem}
+                                onClick={()=>pagebout({id:cityItem.id})}
+                                isPulsing={isPulsing}
+                                setPulse={(i)=>{setPulsing(i)}}
+                                className={`${cityItem.name}-${cityItem.id}`} 
+                            />
+                        )}
+                    </MapPinLst>
+                </Map>
+            </MapConteiner>
+            {aboutOpen&&<ScreenAboult aboutIsOpen={aboutOpen} data={city} close={()=>setAboutOpen(false)}/>}
+        </Main>
+    </Home>
   )
 }
-export default Home
+export default HomePage

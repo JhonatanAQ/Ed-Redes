@@ -1,40 +1,36 @@
+import { useEffect, useState } from "react"
 import type { CityData } from "../../interface"
-import './styles.css'
+import {MapPinB,MapPin1,MapPin2,MapPin3} from "./styles"
 
-export function MapPin({data,className,onClick}:{
+export function MapPin({data,className,onClick,isPulsing,setPulse}:{
     data:CityData,
     className:string,
+    isPulsing:string,
+    setPulse:(i:string)=>any,
     onClick :()=>any
 }) {
-    function setPulse(){
-        
-        const btnAll = document.querySelectorAll('.map-pin-b1')
-        for (const item of btnAll) {
-           item?.setAttribute("class","map-pin-b1")
-           const itemChild = item?.querySelector(':last-child')
-           itemChild?.setAttribute("style", "border-color: #06b5d4;")
-        }
-        const btnUnic = document.querySelector(`.${className.toLocaleLowerCase()}`)
-        const map_pin_b1 = btnUnic?.querySelector(':last-child')
-        map_pin_b1?.setAttribute("class","map-pin-b1 pulse")
-        const map_pin_b2 = map_pin_b1?.querySelector(':last-child')
-        map_pin_b2?.setAttribute("style", "border-color: #10B981;")
-        onClick()
+    const [pulsing,setPulsing]= useState(false)
+
+    function onPulse(){
+        if (isPulsing !== data.name) setPulse(data.name);
+        onClick();
     }
+    useEffect(()=>{
+        if (isPulsing === data.name) {
+            setPulsing(true)
+        }else{
+            setPulsing(false)
+        }
+    })
 
     return(
-         <button style={{
-            position: "absolute",
-            top:`${data.position.y}px`,
-            left:`${data.position.x}px` 
-        
-         }} type="button"className={className.toLocaleLowerCase()}onClick={()=>setPulse()}>
-            <div className='map-pin-b1'>
-                <div className='map-pin-b2'>
-                    <div className='map-pin-b3'>
-                    </div>
-                </div>
-            </div>
-         </button>
+         <MapPinB $position={data.position} className={className.toLocaleLowerCase()}onClick={()=>{onPulse()}}>
+            <MapPin1 $isPulsing={pulsing}>
+                <MapPin2>
+                    <MapPin3>
+                    </MapPin3>
+                </MapPin2>
+            </MapPin1>
+         </MapPinB>
     )
 }

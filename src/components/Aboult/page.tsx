@@ -1,11 +1,11 @@
 import type { CityData } from "../../interface";
-import './styles.css'
+import {AboultCity,AboultCityName} from './styles'
 
-export function ScreenAboult({data,close}:{data:CityData,close:()=>any}|any) {
+export function ScreenAboult({data,close,aboutIsOpen}:{data:CityData,close:()=>any,aboutIsOpen:boolean}|any) {
     
     return(
-        <div className='page-city-aboult' id='close'>
-            <h1>{data.name}</h1>
+        <AboultCity $aboutIsOpen={aboutIsOpen}>
+            <AboultCityName>{data.name}</AboultCityName>
             <button style={{
                 color:"#fff",
                 position:"fixed",
@@ -14,6 +14,6 @@ export function ScreenAboult({data,close}:{data:CityData,close:()=>any}|any) {
             }} type="button" onClick={()=>{close()}}>
                 x
             </button>
-        </div>
+        </AboultCity>
     )
 }
