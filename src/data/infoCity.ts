@@ -40,3 +40,24 @@ export  const cityDateJSON:CityData[] = [
             }
         }
 ]
+
+export function getCityImageSrc(cityName: string): string {
+    if (cityName === "Curitiba") {
+        return "/img-city/curitiba.jpg"
+    }
+    if (cityName === "Londrina") {
+        return "/img-city/londrina.jpg"
+    }
+    if (cityName === "Maringa") {
+        return "/img-city/maringa.jpg"
+    }
+    return "/img-city/londrina.jpg"
+}
+
+export function getCitySlug(cityName: string): string {
+    return cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+}
+
+export function getCityBySlug(slug: string): CityData | undefined {
+    return cityDateJSON.find(city => getCitySlug(city.name) === slug)
+}
