@@ -61,3 +61,11 @@ export function getCitySlug(cityName: string): string {
 export function getCityBySlug(slug: string): CityData | undefined {
     return cityDateJSON.find(city => getCitySlug(city.name) === slug)
 }
+
+export function getCitiesSortedAlphabetically(): CityData[] {
+    return [...cityDateJSON].sort((a, b) => {
+        const nameA = a.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        const nameB = b.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        return nameA.localeCompare(nameB)
+    })
+}
