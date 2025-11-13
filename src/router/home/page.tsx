@@ -31,12 +31,12 @@ function HomePage() {
     <Home>
         <Main>
             <Header>
-                <HeaderIcon src="./logo.svg" alt="icone do site semeando o futuro" />
+                <HeaderIcon src="/logo.svg" alt="icone do site semeando o futuro" />
                 <HeaderTitle>Semeando o Futuro</HeaderTitle>
             </Header>
             <MapConteiner $aboutIsOpen={aboutOpen}>
                 <Map>
-                    <MapImg src="./map.svg" alt="mapa do paraná" />
+                    <MapImg src="/map.svg" alt="mapa do paraná" />
                     <MapPinLst>
                         {cityData.map(cityItem =>       
                             <MapPin
