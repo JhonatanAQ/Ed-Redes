@@ -24,6 +24,7 @@ export const AboultCity = styled.div<{$aboutIsOpen:boolean}>`
     top: 0;
     animation:${open} 1s forwards;
     pointer-events: ${(props) => (props.$aboutIsOpen ? 'auto' : 'none')};
+    z-index: 10;
 `
 export const CityHeader = styled.div`
     width:100%;
