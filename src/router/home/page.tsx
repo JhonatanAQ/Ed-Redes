@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 
-import { cityDateJSON}  from '../../data/infoCity.ts'
+import { getCitiesSortedAlphabetically}  from '../../data/infoCity.ts'
 import type { CityData } from '../../interface.ts'
 import { ScreenAboult } from '../../components/Aboult/page.tsx'
 import { MapPin } from '../../components/MapPin/page.tsx'
-import {Home,Main,Header,HeaderIcon,HeaderTitle,Map,MapImg, MapConteiner, MapPinLst} from './styles.ts'
+import { CityList } from '../../components/CityList/page.tsx'
+import {Home,Main,Header,HeaderIcon,HeaderTitle,ContentContainer,CityListWrapper,MapConteiner,Map,MapImg, MapPinLst} from './styles.ts'
+
 function HomePage() {
     const [aboutOpen,setAboutOpen] = useState<boolean>(false)
     const [city ,setCity] = useState<CityData>()
     const [cityData,setCityData] = useState<CityData[]>([])
+    const [sortedCities,setSortedCities] = useState<CityData[]>([])
     const [isPulsing,setPulsing]= useState<string>('')
 
     function pagebout(props:{id:number}) {
@@ -22,11 +25,17 @@ function HomePage() {
             setAboutOpen(true)
         }
     }
+
+    function handleCityClick(id:number) {
+        pagebout({id})
+    }
+
     useEffect(()=>{
-        if (cityDateJSON) {
-            setCityData(cityDateJSON)
-        }
-    })
+        const cities = getCitiesSortedAlphabetically()
+        setSortedCities(cities)
+        setCityData(cities)
+    }, [])
+    
   return (
     <Home>
         <Main>
@@ -34,23 +43,32 @@ function HomePage() {
                 <HeaderIcon src="/logo.svg" alt="icone do site semeando o futuro" />
                 <HeaderTitle>Semeando o Futuro</HeaderTitle>
             </Header>
-            <MapConteiner $aboutIsOpen={aboutOpen}>
-                <Map>
-                    <MapImg src="/map.svg" alt="mapa do paraná" />
-                    <MapPinLst>
-                        {cityData.map(cityItem =>       
-                            <MapPin
-                                key={cityItem.id}
-                                data={cityItem}
-                                onClick={()=>pagebout({id:cityItem.id})}
-                                isPulsing={isPulsing}
-                                setPulse={(i)=>{setPulsing(i)}}
-                                className={`${cityItem.name}-${cityItem.id}`} 
-                            />
-                        )}
-                    </MapPinLst>
-                </Map>
-            </MapConteiner>
+            <ContentContainer $aboutIsOpen={aboutOpen}>
+                <CityListWrapper>
+                    <CityList 
+                        cities={sortedCities}
+                        onCityClick={handleCityClick}
+                        selectedCityId={city?.id}
+                    />
+                </CityListWrapper>
+                <MapConteiner $aboutIsOpen={aboutOpen}>
+                    <Map>
+                        <MapImg src="/map.svg" alt="mapa do paraná" />
+                        <MapPinLst>
+                            {cityData.map(cityItem =>       
+                                <MapPin
+                                    key={cityItem.id}
+                                    data={cityItem}
+                                    onClick={()=>pagebout({id:cityItem.id})}
+                                    isPulsing={isPulsing}
+                                    setPulse={(i)=>{setPulsing(i)}}
+                                    className={`${cityItem.name}-${cityItem.id}`} 
+                                />
+                            )}
+                        </MapPinLst>
+                    </Map>
+                </MapConteiner>
+            </ContentContainer>
             {aboutOpen&&<ScreenAboult aboutIsOpen={aboutOpen} data={city} />}
         </Main>
     </Home>
