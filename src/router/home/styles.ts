@@ -98,3 +98,21 @@ export const MapImg = styled.img`
     z-index: 0;
 `
 
+export const DebugInfo = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #06b5d4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    font-size: 12pt;
+    font-family: monospace;
+    border: 2px solid #06b5d4;
+    
+    div {
+        margin: 0.5rem 0;
+    }
+`
+

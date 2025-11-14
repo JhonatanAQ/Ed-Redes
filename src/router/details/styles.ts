@@ -140,3 +140,71 @@ export const BackButton = styled.button`
     }
 `
 
+export const MoreInfoSection = styled.div`
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--bg-header);
+    border-radius: 1rem;
+    border: solid 2px var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+`
+
+export const MoreInfoTitle = styled.h2`
+    color: var(--color-green);
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 0;
+`
+
+export const StatsGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+`
+
+export const StatItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`
+
+export const StatLabel = styled.span`
+    color: #ffffffb2;
+    font-size: 11pt;
+    font-weight: 500;
+`
+
+export const StatValue = styled.span`
+    color: #ffffff;
+    font-size: 14pt;
+    font-weight: 600;
+`
+
+export const TabsContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1rem;
+`
+
+export const TabButton = styled.button<{$active: boolean}>`
+    padding: 1rem 2rem;
+    background-color: transparent;
+    color: ${props => props.$active ? 'var(--color-green)' : '#ffffffb2'};
+    border: none;
+    border-bottom: ${props => props.$active ? '3px solid var(--color-green)' : '3px solid transparent'};
+    font-size: 14pt;
+    font-weight: ${props => props.$active ? '600' : '400'};
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 2px;
+
+    &:hover {
+        color: var(--color-green);
+    }
+`
+
