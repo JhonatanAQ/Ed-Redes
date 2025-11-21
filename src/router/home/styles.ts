@@ -15,7 +15,9 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content:start;
-    gap: 2rem ;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
 `
 export const Header = styled.header`
     width:100%;
@@ -31,6 +33,7 @@ export const Header = styled.header`
     color: white;
     font-size: 8pt;
     border-bottom: solid 2px var(--border-color);
+    flex-shrink: 0;
 `
 export const HeaderIcon = styled.img`
     width:3rem;
@@ -38,26 +41,78 @@ export const HeaderIcon = styled.img`
 export const HeaderTitle = styled.h1`
    
 `
+export const ContentContainer = styled.div<{$aboutIsOpen:boolean}>`
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    padding-right: ${props => props.$aboutIsOpen ? '28%' : '0'};
+    box-sizing: border-box;
+`
+export const CityListWrapper = styled.div`
+    width: 20%;
+    min-width: 250px;
+    max-width: 300px;
+    height: 100%;
+    background-color: var(--bg-header);
+    border-right: solid 2px var(--border-color);
+    flex-shrink: 0;
+`
 export const MapConteiner = styled.div<{$aboutIsOpen:boolean}>`
-    width: ${({$aboutIsOpen})=>$aboutIsOpen ? '76%' : '100%'};
-    height:100%;
-    display:flex;
-    justify-content:center;
-    transition: width 0.5s ease-in-out;
-` 
-export const Map = styled.div`
-    width:40rem;
-    height:30rem ;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+    padding: 2rem;
+    box-sizing: border-box;
     position: relative;
+` 
+export const Map = styled.div`
+    width: 40rem;
+    max-width: 100%;
+    height: 30rem;
+    max-height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    margin: 0 auto;
 `
 export const MapPinLst = styled.div`
-    width:40rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: auto;
+    z-index: 1;
 `
 export const MapImg = styled.img`
-    width:40rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 0;
+`
+
+export const DebugInfo = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #06b5d4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    font-size: 12pt;
+    font-family: monospace;
+    border: 2px solid #06b5d4;
+    
+    div {
+        margin: 0.5rem 0;
+    }
 `
 

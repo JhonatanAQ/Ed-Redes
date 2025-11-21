@@ -24,6 +24,7 @@ export const AboultCity = styled.div<{$aboutIsOpen:boolean}>`
     top: 0;
     animation:${open} 1s forwards;
     pointer-events: ${(props) => (props.$aboutIsOpen ? 'auto' : 'none')};
+    z-index: 10;
 `
 export const CityHeader = styled.div`
     width:100%;
@@ -81,4 +82,30 @@ export const CloseIcon = styled.img`
 export const CityMain = styled.div`
     width:100%;
     padding:20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`
+
+export const DetailsButton = styled.button`
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-green);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 10pt;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+
+    &:hover {
+        background-color: var(--color-blue);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
 `
